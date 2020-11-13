@@ -16,6 +16,8 @@ class RegistrationForm(FlaskForm):
         user = User.query.filter_by(username=username.data).first()
         if user:
             raise ValidationError('User already exist!')
+        else:
+            return True
     
     def validate_email(self, email):
         user = User.query.filter_by(email=email.data).first()
@@ -35,6 +37,20 @@ class PostForm(FlaskForm):
 
 
 def validate_username(self, username):
-    user = User.query.filter_by(username=username.data).first()
+    user = User.query.filter_by(username=username).first()
     if user:
         raise ValidationError('User already exist!')
+
+class  Reset_req_form(FlaskForm):
+    email= StringField('E-Mail', validators=[DataRequired(), Email()])
+    submit = SubmitField("Get Reset Link")
+
+    def validate_email_reset(self,email):
+        user = User.query.filter_by(email=email.data).first()
+        if user in None:
+            raise ValidationError('This email is not registerd! Please register your email id!')
+
+class  Reset_password_form(FlaskForm):
+    password= PasswordField("Password", validators=[DataRequired(), Length(min=5, max=20)])
+    confirm_password= PasswordField("Confirm Password", validators=[DataRequired(), EqualTo('password')])
+    submit = SubmitField("Submit Password")
