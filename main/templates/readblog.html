@@ -21,10 +21,10 @@
                 <span>Time : {{ i.time.year }}-{{ i.time.month }}-{{ i.time.day }}</span>
                 {% if i.author == current_user.username %}
                 <div class="post-button">
-                    <form action="{{url_for('update_blog', post_id = i.post_id)}}" method="POST">
+                    <form action="{{url_for('posts.update_blog', post_id = i.post_id)}}" method="POST">
                         <button type="submit"><i class="far fa-edit"></i></button>
                     </form>
-                    <form action="{{url_for('delete_blog', post_id = i.post_id)}}" method="POST">
+                    <form action="{{url_for('posts.delete_blog', post_id = i.post_id)}}" method="POST">
                         <button type="submit"><i class="fas fa-trash-alt"></i></button>
                     </form>
                 </div>
@@ -39,9 +39,9 @@
             {% for page_num in posts.iter_pages(left_edge=1,right_edge=1,left_current=1,right_current=2) %}
                 {% if page_num %}
                     {% if posts.page == page_num %}
-                        <a href="{{url_for('readblog',page=page_num)}}" class="btn btn-secondary">{{ page_num }}</a>
+                        <a href="{{url_for('posts.readblog',page=page_num)}}" class="btn btn-secondary">{{ page_num }}</a>
                     {% else %}
-                        <a href="{{url_for('readblog',page=page_num)}}" class="btn btn-outline-secondary">{{ page_num }}</a>
+                        <a href="{{url_for('posts.readblog',page=page_num)}}" class="btn btn-outline-secondary">{{ page_num }}</a>
                     {% endif %}
                 {% else %}
                     <a href="#" class="btn btn-outline-secondary">...</a>

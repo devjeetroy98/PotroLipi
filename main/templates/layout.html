@@ -22,26 +22,26 @@
           <ul class="navbar-nav ml-auto" style="margin-right: 150px;">
             {% if current_user.is_authenticated %}
             <li class="nav-item active">
-              <a class="nav-link" href="{{ url_for('dashboard_page') }}">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="{{ url_for('users.dashboard_page') }}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('readblog') }}">Posts<span class="sr-only"></span></a>
+              <a class="nav-link" href="{{ url_for('posts.readblog') }}">Posts<span class="sr-only"></span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('writeblog') }}">Write<span class="sr-only"></span></a>
+              <a class="nav-link" href="{{ url_for('posts.writeblog') }}">Write<span class="sr-only"></span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('logout') }}">Sign Out</a>
+              <a class="nav-link" href="{{ url_for('users.logout') }}">Sign Out</a>
             </li>
             {% else %}
             <li class="nav-item active">
-              <a class="nav-link" href="{{ url_for('home_page') }}">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="{{ url_for('others.home_page') }}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('login_page') }}">Login</a>
+              <a class="nav-link" href="{{ url_for('users.login_page') }}">Login</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('register_page') }}">Register</a>
+                <a class="nav-link" href="{{ url_for('users.register_page') }}">Register</a>
             </li>
             {% endif %}
           </ul>
