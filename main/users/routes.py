@@ -79,7 +79,7 @@ def reset_req():
     return render_template('reset_req.html', form=form)
 
 
-@users.route("https://potrolipi.herokuapp.com/reset-password/<token>", methods=["GET","POST"])
+@users.route("/reset-password/<token>", methods=["GET","POST"])
 def reset_done(token):
     form = Reset_password_form()
     if current_user.is_authenticated:
